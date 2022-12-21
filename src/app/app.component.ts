@@ -14,7 +14,9 @@ const API = 'http://aai-frontend-interview-mock-data.s3-website-sa-east-1.amazon
 export class AppComponent {
 
   @Input() cards !: Cards;
+
   searchText = '';
+
   constructor(private cardService: ComponentService, private http: HttpClient){
     this.getAllCards();
   }
@@ -24,5 +26,4 @@ export class AppComponent {
       this.cards = result
     })
   }
-
 }

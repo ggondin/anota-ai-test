@@ -15,13 +15,13 @@
 
 
   <div class="card-content bg-white" >
-    <div  class="card-sub-content" *ngFor="let card of cards | appFilter: searchText">
+    <div  class="card-sub-content" *ngFor="let card of cards | filterCard: searchText">
       <div style="max-width: 250px; max-height: 150px;">
         <img class="card-img bg-white" src="{{card.img}}" alt="">
       </div>
       <div  class="card-specs bg-white" style="max-width: 250px; max-height: 150px;">
         <p class="card-title bg-white">{{card.title}}</p>
-        <p class="card-description bg-white">{{ card.description }}</p>
+        <p class="card-description bg-white">{{ card.description | textFilter:250 }}</p>
       </div>
     </div>
   </div>
