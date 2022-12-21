@@ -33,7 +33,7 @@
 .search-div{
   background-color: #e2e2e2;
 
-  padding: 2rem;
+  // padding: 2rem;
   width: auto;
   height: auto;
   display: flex;
@@ -42,33 +42,44 @@
 
 /* INPUT */
 .search-input{
-
   height: 2rem;
   width: 35rem;
   border-radius: 5px 0 0 5px;
   border-width: thin;
  }
- .search-input:focus {
- outline: none;
+
+ .animation-input:hover{
+  border-color: aqua;
+  .search-button{
+    border-color: aqua;
+  }
  }
+
+ .animation-input:focus{
+  outline: none;
+  border-color: rgb(0, 122, 237);
+ }
+
+ .img-input{
+  background-color: transparent;
+  position: relative;
+  width: 25px;
+  height: 25px;
+}
 
 .search-button{
-
   width: 2.5rem ;
-  border: none;
+  border: 2px solid black;
   border-radius: 0 5px 5px 0;
-  border: 1px 1px 1px 0 solid #ccc !important;
   border-width: thin;
+  float: left;
  }
 
- .search-button:hover{
-  cursor: pointer;
- }
-
-.search-button .svg {
-  display: center;
-  color: grey;
- }
+.search-button:hover{
+  .search-input{
+    border-color: aqua;
+  }
+}
 /* FIM DO HEADER */
 
 
@@ -77,22 +88,83 @@
   background-color: #e2e2e2;
   justify-content: center;
   display: flex;
+  position: relative;
+}
+
+.button-exit{
+  display: flex;
+  width: 1.875rem;
+  height: 1.875rem;
+  top: -0.5rem;
+  left: 14.75rem;
+  border-width: thin;
+  border: grey 0.12rem solid;
+  border-radius: 0.9375rem;
+  background-color: #FFF;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+}
+
+.hidde{
+  display: none;
+}
+
+.button-exit:hover{
+  cursor: pointer;
+}
+
+.img-card{
+  background-color: transparent;
+  color:#e2e2e2;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .card-sub-content{
   background-color: #FFF;
-  outline: 1px solid red;
   margin: 3rem 0 0 2rem;
   border-radius: 10px;
   height: 350px;
   width: 250px;
+  box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.2);
   display:inline-table;
   justify-content: space-between;
-
+  transform: scale(1);
+  transition-duration: 0.5s;
  }
 
+ .type-card{
+  position: relative;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #FFF;
+  padding: 0.2rem;
+ }
+
+ .flower{
+  bottom: 1.7rem;
+  left: 13.4rem;
+ }
+
+ .food{
+  bottom: 1.7rem;
+  left: 13rem;
+ }
+
+ .landscape{
+  bottom: 1.7rem;
+  left: 11.4rem;
+ }
+
+
+ .card-sub-content:hover{
+  transition-duration: 0.5s;
+  transform: scale(1.1);
+}
+
 .card-img{
-  outline: 1px solid red;
   border-radius: 8px 8px 0 0;
 
   width: 100%;
@@ -108,8 +180,6 @@
 }
 
 .card-title{
-  outline: 1px solid red;
-
   max-height:190px;
   max-width: 250px;
 
@@ -119,8 +189,6 @@
  }
 
 .card-description{
-  outline: 1px solid red;
-
   word-spacing: 10%;
   overflow: hidden;
   margin: .5rem;

@@ -5,7 +5,6 @@ import { ComponentService } from './component.service';
 import { Observable } from 'rxjs'
 
 const API = 'http://aai-frontend-interview-mock-data.s3-website-sa-east-1.amazonaws.com/cardlist.json'
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,6 +15,7 @@ export class AppComponent {
   @Input() cards !: Cards;
 
   searchText = '';
+  buttonCard: boolean = false
 
   constructor(private cardService: ComponentService, private http: HttpClient){
     this.getAllCards();
@@ -26,4 +26,12 @@ export class AppComponent {
       this.cards = result
     })
   }
+
+  changeButton(doc: HTMLElement){
+    this.buttonCard = !this.buttonCard
+    console.log(this.buttonCard);
+     doc = document.querySelector("div[target]")
+  }
+
+
 }
