@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Cards } from './card';
 import { ComponentService } from './component.service';
 import { Observable } from 'rxjs'
+import { removeAllListeners } from 'process';
 
 const API = 'http://aai-frontend-interview-mock-data.s3-website-sa-east-1.amazonaws.com/cardlist.json'
 @Component({
@@ -10,15 +11,19 @@ const API = 'http://aai-frontend-interview-mock-data.s3-website-sa-east-1.amazon
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  @Input() cards !: Cards;
-
-  searchText = '';
+  cards : Cards;
+  filterBy = '';
   buttonCard: boolean = false
+  timeout: any;
 
   constructor(private cardService: ComponentService, private http: HttpClient){
     this.getAllCards();
+  }
+
+  ngOnInit(): void {
+
   }
 
   getAllCards(){
@@ -26,12 +31,14 @@ export class AppComponent {
       this.cards = result
     })
   }
-
-  changeButton(doc: HTMLElement){
-    this.buttonCard = !this.buttonCard
-    console.log(this.buttonCard);
-     doc = document.querySelector("div[target]")
+  remove(card) {
+    let index = this.cards.indexOf(card);
+    this.cards.splice(index, 1);
   }
-
-
+  filter() {
+  }
 }
+
+
+// const cardsArray = this.cards
+// cardsArray.filter(()=>{})

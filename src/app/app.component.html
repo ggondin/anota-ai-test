@@ -8,27 +8,28 @@
 
 
     <form class="search-div bg-white animation-input">
-      <input [(ngModel)]="searchText" name="search" class="search-input bg-white animation-input" type="text">
+      <input [(ngModel)]="filterBy" name="search" class="search-input bg-white animation-input" type="text">
       <button class="search-button bg-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="img-input" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
       </svg></button>
     </form>
 
 
-  <div class="card-content" *ngIf="buttonCard == false">
-
-    <div class="card-sub-content" *ngFor="let card of cards | filterCard:searchText">
-          <button (click)="changeButton(doc)" class="button-exit"><img class="img-card" src="http://aai-frontend-interview-mock-data.s3-website-sa-east-1.amazonaws.com/assets/close.svg"></button>
+  <div class="card-content">
+    <div>
+        <div id="ngForCards" class="card-sub-content" *ngFor="let card of cards | filter:filterBy:'title' let i=index">
+        <button (click)="remove(card)" class="button-exit"><img class="img-card" src="http://aai-frontend-interview-mock-data.s3-website-sa-east-1.amazonaws.com/assets/close.svg"></button>
           <div style="max-width: 250px; max-height: 150px;">
             <img class="card-img bg-white" src="{{card.img}}" alt="">
             <span class="type-card landscape" style="background-color: rgb(171, 162, 36);" *ngIf="card.type == '1'">Paisagem</span>
             <span class="type-card flower" style="background-color: rgb(255, 0, 136);" *ngIf="card.type == '2'">Flor</span>
             <span class="type-card food" style="background-color: rgb(47, 47, 255);" *ngIf="card.type == '3'">Pizza</span>
-          </div>
-          <div  class="card-specs bg-white" style="max-width: 250px; max-height: 150px;">
+            </div>
+          <div class="card-specs bg-white" style="max-width: 250px; max-height: 150px;">
             <p class="card-title bg-white">{{card.title}}</p>
             <p class="card-description bg-white">{{ card.description | textFilter:250 }}</p>
           </div>
         </div>
+      </div>
   </div>
 

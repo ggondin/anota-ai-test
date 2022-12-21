@@ -3,19 +3,31 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 
 @Pipe({
-  name: 'filterCard',
+  name: 'filter',
 })
 export class FilterCardPipe implements PipeTransform {
-  transform(values: any, search:string){
-    let cards = [];
-    if(search == ''){
-      return values
+  transform(value: Cards[], filterString: string, property: string): Cards[] {
+    if (value.length === 0 || !filterString) {
+      return value;
     }
-    for(let card of values) {
-      if(card.title == search){
-        cards.push(card);
+    let filteredCards: Cards[] = [];
+    for (let card of value) {
+      if (card[property].toLowerCase().includes(filterString.toLowerCase())) {
+        filteredCards.push(card);
       }
-      return cards;
     }
+    return filteredCards;
   }
 }
+
+
+//let cards = [];
+    // if(searchText == ''){
+    //   return values
+    // }
+    // for(let card of values) {
+    //   if(card.title == searchText){
+    //     cards.push(card);
+    //   }
+    //   return cards;
+    // }
