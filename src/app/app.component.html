@@ -8,17 +8,17 @@
 
 
     <form class="search-div bg-white animation-input">
-      <input [(ngModel)]="filterBy" name="search" class="search-input bg-white animation-input" type="text">
-      <button class="search-button bg-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="img-input" viewBox="0 0 16 16">
+      <input [(ngModel)]="filterBy" name="search" class="bg-white animation-input search-input " type="text">
+      <svg class="search-svg" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-      </svg></button>
+      </svg>
     </form>
 
 
   <div class="card-content">
     <div>
         <div id="ngForCards" class="card-sub-content" *ngFor="let card of cards | filter:filterBy:'title' let i=index">
-        <button (click)="remove(card)" class="button-exit"><img class="img-card" src="http://aai-frontend-interview-mock-data.s3-website-sa-east-1.amazonaws.com/assets/close.svg"></button>
+        <button (click)="remove(card)" class="button-exit" ><svg xmlns="http://www.w3.org/2000/svg" class="img-card" viewBox="0 0 512 512"><title>Close</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M368 368L144 144M368 144L144 368"/></svg></button>
           <div style="max-width: 250px; max-height: 150px;">
             <img class="card-img bg-white" src="{{card.img}}" alt="">
             <span class="type-card landscape" style="background-color: rgb(171, 162, 36);" *ngIf="card.type == '1'">Paisagem</span>
